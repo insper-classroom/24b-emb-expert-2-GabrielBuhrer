@@ -6,13 +6,11 @@
 #include "hardware/adc.h"
 #include "FreeRTOS.h"
 #include "task.h"
-
-// Inclua os headers da biblioteca OLED
 #include "ssd1306.h"
 #include "gfx.h"
 
 #define SPI_PORT spi0
-#define SSD1306_DATA_CMD_SEL 20 // Exemplo de pino
+#define SSD1306_DATA_CMD_SEL 20 
 #define OLED_CS 17
 #define OLED_DC 16
 #define OLED_RESET 21
@@ -70,7 +68,7 @@ void vTaskADC(void *pvParameters) {
 
 void vTaskOLED(void *pvParameters) {
     // Inicializa o OLED
-    ssd1306_init(&disp, 128, 64, 0x3C, i2c0);
+    ssd1306_init();
 
     while (1) {
         gfx_clear_buffer(&disp);
@@ -83,20 +81,20 @@ void vTaskOLED(void *pvParameters) {
 int main() {
     stdio_init_all();
 
-    // Inicializa o DMA para o SPI
+   
     init_dma_for_spi();
 
-    // Cria a tarefa de ADC no Core 0
+   
     TaskHandle_t xHandleADC = NULL;
     xTaskCreate(vTaskADC, "ADC Task", 256, NULL, 1, &xHandleADC);
     vTaskCoreAffinitySet(xHandleADC, 1 << 0); // Core 0
 
-    // Cria a tarefa do OLED no Core 1
+   
     TaskHandle_t xHandleOLED = NULL;
     xTaskCreate(vTaskOLED, "OLED Task", 256, NULL, 1, &xHandleOLED);
     vTaskCoreAffinitySet(xHandleOLED, 1 << 1); // Core 1
 
-    // Inicia o scheduler
+    
     vTaskStartScheduler();
 
     while (1);

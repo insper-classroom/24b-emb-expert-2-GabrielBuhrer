@@ -5,7 +5,7 @@ add_library(oled1_lib
 )
 
 
-target_link_libraries(oled1_lib pico_stdlib hardware_spi)
+target_link_libraries(oled1_lib pico_stdlib hardware_spi hardware_adc)
 
 
 target_include_directories(oled1_lib PUBLIC

@@ -40,7 +40,8 @@
          "buildTarget": {
              "visibility": "hidden"
          }
-}
+},
+"C_Cpp.dimInactiveRegions": false
 
      
 }

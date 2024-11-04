@@ -40,6 +40,8 @@ endif()
 add_subdirectory(main)
 
 
+
+
 add_executable(pico-freertos
     main/main.c
 )
@@ -75,6 +77,8 @@ target_compile_options(pico-freertos PRIVATE -Wall)
 pico_add_extra_outputs(pico-freertos)
 
 add_subdirectory(oled1_lib)
+
+
 
 
 
