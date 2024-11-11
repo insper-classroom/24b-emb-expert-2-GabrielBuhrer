@@ -51,16 +51,16 @@
 #define SPI_PORT spi1
 #define SSD1306_LATENCY 10
 
-void ssd1306_set_display_start_line_address(uint8_t address);
-void ssd1306_set_column_address(uint8_t address);
-void ssd1306_set_page_address(uint8_t address);
-void ssd1306_display_on(void);
-void ssd1306_display_off(void);
-uint8_t ssd1306_set_contrast(uint8_t contrast);
-void ssd1306_display_invert_enable(void);
-void ssd1306_display_invert_disable(void);
-void ssd1306_put_page(uint8_t *data, uint8_t page, uint8_t column,
-                      uint8_t width);
+inline void spi_cs_select(void);
+inline void spi_cs_deselect(void);
+inline void ssd1306_set_display_start_line_address(uint8_t address);
+inline void ssd1306_set_column_address(uint8_t address);
+inline void ssd1306_set_page_address(uint8_t address);
+inline void ssd1306_display_on(void);
+inline void ssd1306_display_off(void);
+inline uint8_t ssd1306_set_contrast(uint8_t contrast);
+inline void ssd1306_display_invert_enable(void);
+inline void ssd1306_display_invert_disable(void);
 
 void gfx_mono_ssd1306_put_byte(uint8_t page, uint8_t column, uint8_t data,
                                bool force);

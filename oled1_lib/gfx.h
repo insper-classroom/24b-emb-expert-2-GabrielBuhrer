@@ -7,7 +7,7 @@
 typedef struct {
     uint8_t width;     /**< width of display */
     uint8_t height;    /**< height of display */
-    uint8_t pages;     /**< stores pages of display calculated on initialization*/
+    uint8_t pages;     /**< stores pages of display (calculated on initialization*/
     bool external_vcc; /**< whether display uses external vcc */
     uint8_t *buffer;   /**< display buffer */
     size_t bufsize;    /**< buffer size */
